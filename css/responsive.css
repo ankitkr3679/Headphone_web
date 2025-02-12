@@ -97,7 +97,7 @@
         line-height: 1rem;
         margin-bottom: 5px;
     }
-    .hero_slider {
+    /* .hero_slider {
         height: 70vh;
     }
     .carousel-item img {
@@ -105,7 +105,7 @@
     } 
     .hero_slider .carousel-caption {
         padding-top: 3rem;
-    }
+    } */
    
 }
 
@@ -120,7 +120,7 @@
         font-size: 0.75rem;
         line-height: 1.125rem;
     }
-    .hero_slider {
+    /* .hero_slider {
         height: 80vh;
     }
     .carousel-item img {
@@ -128,6 +128,6 @@
     }
     .hero_slider .carousel-caption {
         padding-top: 3rem;
-    }
+    } */
 
 }
