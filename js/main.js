@@ -12,11 +12,24 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Active navbar
-let nav = document.querySelector('.navigation-wrap');
-window.onscroll =function (){
-    if(document.documentElement.scrollTop >10){
-        nav.classList.add("scroll-on");
-    }else{
-        nav.classList.add("scroll-on");
+document.addEventListener("DOMContentLoaded", function () {
+    let navbar = document.querySelector(".navigation-wrap");
+    let topHeader = document.getElementById("topHeader");
+
+    // Scroll Event
+    window.addEventListener("scroll", function () {
+        if (window.scrollY > 0) {
+            navbar.classList.add("fixed-nav");
+        } else {
+            navbar.classList.remove("fixed-nav");
+        }
+    });
+    // Close Button Click Event
+    function closeHeader() {
+        if (topHeader) {
+            topHeader.style.display = "none";
+        }
     }
-}
+    // Attach function to the window (for inline onclick)
+    window.closeHeader = closeHeader;
+});
