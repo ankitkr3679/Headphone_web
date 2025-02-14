@@ -12,6 +12,9 @@
     --light-white:#f5f8fa;
     --gray:#5e6278;
     --gray-1:#e3e3e3;
+    --primarya-color: #fd8eaf;
+    --white-color: #fff;
+    --text--color: #9e9999;
 }
 body{
     font-family: var(--primary-font-family);
@@ -55,4 +58,103 @@ body{
 }
 .wrapper .login_with img {
    max-width: 10%;
+}
+/* header Design */
+.navigation-wrap {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    z-index: 1000;
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+.navigation-wrap .nav-item {
+    padding: 0.5rem;
+    transition: all 200ms linear;
+}
+
+.navbar-toggler:focus {
+    outline: none;
+    border: unset;
+    box-shadow: none;
+}
+
+.nav-link {
+    padding-top: 0.9375rem;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    text-transform: capitalize;
+    color: var(--white-color);
+    letter-spacing: 0.0625rem;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primarya-color);
+}
+.offcanvas .main-btn {
+    display: inline-block;
+    border: .0625rem solid var(--white-color);
+    color: var(--white-color);
+    text-align: center;
+    font-size: 1rem;
+    background: transparent;
+    text-transform: capitalize;
+    border-radius: .1875rem;
+    transition: all 0.3s ease-in-out;
+    width: 50%;
+    
+}
+.main-btn {
+    display: inline-block;
+    border: .0625rem solid var(--white-color);
+    color: var(--white-color);
+    text-align: center;
+    font-size: 1rem;
+    background: transparent;
+    text-transform: capitalize;
+    border-radius: .1875rem;
+    transition: all 0.3s ease-in-out;
+    width: 150%;
+}
+.main-btn:hover {
+    background-color: var(--white-color);
+    border-color: var(--primarya-color);
+    color: var(--text-white);
+}
+.top-header {
+    background-color: grey;
+}
+
+.top-header span a {
+    color: var(--white-color);
+    font-weight: bold;
+}
+
+.top-header span {
+    color: var(--white-color);
+    font-weight: bold;
+}
+
+.top-nav-wrapper {
+    position: relative;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+}
+
+/* When scrolled: Fix position at top */
+.fixed-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: black;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+/* Smooth transition effect */
+.navigation-wrap {
+    transition: all 0.3s ease-in-out;
 }
