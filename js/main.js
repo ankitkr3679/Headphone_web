@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let navLinks = document.querySelectorAll(".nav-link");
     let offcanvas = document.querySelector(".offcanvas");
     let bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
-    
+
     navLinks.forEach((link) => {
         link.addEventListener("click", () => {
             bsOffcanvas.hide();
@@ -32,4 +32,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     // Attach function to the window (for inline onclick)
     window.closeHeader = closeHeader;
+});
+
+// Login Form Validation
+document.getElementById("loginForm").addEventListener("submit", function (event) {
+    let form = this;
+
+    // Check form validity
+    if (!form.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+
+    // Add Bootstrap validation classes
+    form.classList.add("was-validated");
 });
