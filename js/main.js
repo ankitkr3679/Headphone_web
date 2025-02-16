@@ -47,3 +47,51 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
     // Add Bootstrap validation classes
     form.classList.add("was-validated");
 });
+
+
+// First Name
+function validateName(input) {
+    let regex = /^[A-Za-z\s]+$/; // Sirf letters aur space allow karega
+    let errorDiv = document.getElementById("nameError");
+
+    if (!regex.test(input.value)) {
+        input.classList.add("is-invalid");
+        errorDiv.style.display = "block";
+        input.value = input.value.replace(/[^A-Za-z\s]/g, ""); // Numbers hata dega
+    } else {
+        input.classList.remove("is-invalid");
+        errorDiv.style.display = "none";
+    }
+}
+
+
+// Last Name
+function validateLastName(input) {
+    let regex = /^[A-Za-z\s]+$/; // Sirf alphabets aur spaces allow
+    let errorDiv = document.getElementById("lastNameError");
+
+    if (!regex.test(input.value)) {
+        input.classList.add("is-invalid");
+        errorDiv.style.display = "block";
+        input.value = input.value.replace(/[^A-Za-z\s]/g, ""); // Numbers & special characters hata dega
+    } else {
+        input.classList.remove("is-invalid");
+        errorDiv.style.display = "none";
+    }
+}
+//  confirm password
+function validatePassword() {
+    let password = document.getElementById("floatingPassword").value;
+    let confirmPassword = document.getElementById("floatingConfirmPassword").value;
+    let confirmPasswordField = document.getElementById("floatingConfirmPassword");
+    let errorDiv = document.getElementById("confirmPasswordError");
+
+    if (password !== confirmPassword || confirmPassword === "") {
+        confirmPasswordField.classList.add("is-invalid");
+        errorDiv.style.display = "block";
+    } else {
+        confirmPasswordField.classList.remove("is-invalid");
+        confirmPasswordField.classList.add("is-valid");
+        errorDiv.style.display = "none";
+    }
+}
