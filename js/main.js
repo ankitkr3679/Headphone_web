@@ -49,49 +49,65 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
 });
 
 
-// First Name
-function validateName(input) {
-    let regex = /^[A-Za-z\s]+$/; // Sirf letters aur space allow karega
-    let errorDiv = document.getElementById("nameError");
+// // First Name
+// function validateName(input) {
+//     let regex = /^[A-Za-z\s]+$/; // Sirf letters aur space allow karega
+//     let errorDiv = document.getElementById("nameError");
 
-    if (!regex.test(input.value)) {
-        input.classList.add("is-invalid");
-        errorDiv.style.display = "block";
-        input.value = input.value.replace(/[^A-Za-z\s]/g, ""); // Numbers hata dega
+//     if (!regex.test(input.value)) {
+//         input.classList.add("is-invalid");
+//         errorDiv.style.display = "block";
+//         input.value = input.value.replace(/[^A-Za-z\s]/g, ""); // Numbers hata dega
+//     } else {
+//         input.classList.remove("is-invalid");
+//         errorDiv.style.display = "none";
+//     }
+// }
+
+
+// // Last Name
+// function validateLastName(input) {
+//     let regex = /^[A-Za-z\s]+$/; // Sirf alphabets aur spaces allow
+//     let errorDiv = document.getElementById("lastNameError");
+
+//     if (!regex.test(input.value)) {
+//         input.classList.add("is-invalid");
+//         errorDiv.style.display = "block";
+//         input.value = input.value.replace(/[^A-Za-z\s]/g, ""); // Numbers & special characters hata dega
+//     } else {
+//         input.classList.remove("is-invalid");
+//         errorDiv.style.display = "none";
+//     }
+// }
+// //  confirm password
+// function validatePassword() {
+//     let password = document.getElementById("floatingPassword").value;
+//     let confirmPassword = document.getElementById("floatingConfirmPassword").value;
+//     let confirmPasswordField = document.getElementById("floatingConfirmPassword");
+//     let errorDiv = document.getElementById("confirmPasswordError");
+
+//     if (password !== confirmPassword || confirmPassword === "") {
+//         confirmPasswordField.classList.add("is-invalid");
+//         errorDiv.style.display = "block";
+//     } else {
+//         confirmPasswordField.classList.remove("is-invalid");
+//         confirmPasswordField.classList.add("is-valid");
+//         errorDiv.style.display = "none";
+//     }
+// }
+
+// // Login Eye password
+document.getElementById('togglePassword').addEventListener('click', function () {
+    const passwordField = document.getElementById('password');
+    
+    // Toggle password field type
+    if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        this.classList.remove('fa-eye-slash');
+        this.classList.add('fa-eye');
     } else {
-        input.classList.remove("is-invalid");
-        errorDiv.style.display = "none";
+        passwordField.type = 'password';
+        this.classList.remove('fa-eye');
+        this.classList.add('fa-eye-slash');
     }
-}
-
-
-// Last Name
-function validateLastName(input) {
-    let regex = /^[A-Za-z\s]+$/; // Sirf alphabets aur spaces allow
-    let errorDiv = document.getElementById("lastNameError");
-
-    if (!regex.test(input.value)) {
-        input.classList.add("is-invalid");
-        errorDiv.style.display = "block";
-        input.value = input.value.replace(/[^A-Za-z\s]/g, ""); // Numbers & special characters hata dega
-    } else {
-        input.classList.remove("is-invalid");
-        errorDiv.style.display = "none";
-    }
-}
-//  confirm password
-function validatePassword() {
-    let password = document.getElementById("floatingPassword").value;
-    let confirmPassword = document.getElementById("floatingConfirmPassword").value;
-    let confirmPasswordField = document.getElementById("floatingConfirmPassword");
-    let errorDiv = document.getElementById("confirmPasswordError");
-
-    if (password !== confirmPassword || confirmPassword === "") {
-        confirmPasswordField.classList.add("is-invalid");
-        errorDiv.style.display = "block";
-    } else {
-        confirmPasswordField.classList.remove("is-invalid");
-        confirmPasswordField.classList.add("is-valid");
-        errorDiv.style.display = "none";
-    }
-}
+});

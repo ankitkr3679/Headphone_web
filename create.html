@@ -23,6 +23,10 @@
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- CSS -->
     <link rel="stylesheet" href="css/loginstyle.css">
     <link rel="stylesheet" href="css/responsive.css">
@@ -107,48 +111,67 @@
         </div>
     </header>
 
-    <!-- Form -->
     <section class="wrapper">
         <div class="container py-5 mt-5">
             <div class="col-sm-8 offset-sm-2 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 text-center">
-                <div class="logo mb-4">
-                    <!-- Logo can be added here -->
-                </div>
                 <form class="rounded bg-white shadow p-5" id="registrationForm">
                     <h3 class="text-dark fw-border fs-4 mb-2">Create an Account</h3>
                     <div class="fw-normal text-muted mb-4">
-                        Already have an account? <a href="index.html" class="text-primary fw-bold text-decoration-none">Sign in here</a>
+                        Already have an account? <a href="index.html"
+                            class="text-primary fw-bold text-decoration-none">Sign in here</a>
                     </div>
                     <div class="text-center text-muted text-uppercase mb-2">or</div>
                     <a href="#" class="btn btn-light login_with w-100 mb-4">
                         <img src="images/google-icon.svg" class="img-fluid me-3" alt="Google Icon">Sign in with Google
                     </a>
+
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="floatingFirstName" placeholder="First Name" required oninput="validateName(this)">
+                        <input type="text" class="form-control" id="floatingFirstName" placeholder="First Name" required
+                            oninput="validateName(this)">
                         <label for="floatingFirstName">First Name</label>
-                        <div class="invalid-feedback" id="nameError">Please enter only Alphabet</div>
+                        <div class="invalid-feedback">Only alphabets are allowed.</div>
                     </div>
+
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="floatingLastName" placeholder="Last Name" required oninput="validateLastName(this)">
+                        <input type="text" class="form-control" id="floatingLastName" placeholder="Last Name" required
+                            oninput="validateName(this)">
                         <label for="floatingLastName">Last Name</label>
-                        <div class="invalid-feedback" id="lastNameError">Please enter only Alphabet</div>
+                        <div class="invalid-feedback">Only alphabets are allowed.</div>
                     </div>
+
+
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
+                            required>
                         <label for="floatingInput">Email address</label>
                         <div class="invalid-feedback">Please enter a valid email address.</div>
                     </div>
-                    <div class="form-floating mb-3">
-                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" required minlength="8">
-                        <label for="floatingPassword">Password</label>
-                        <span class="password-info mt-2">Use 8 or more characters with a mix of letters, numbers & symbols.</span>
-                        <div class="invalid-feedback">Password must be at least 8 characters long.</div>
+
+                    <!-- Password Field with Show/Hide -->
+                    <div class="form-floating position-relative mb-3">
+                        <input type="password" class="form-control" id="password" placeholder="Password" required
+                            minlength="8">
+                        <label for="password">Password</label>
+
+                        <!-- Eye Icon -->
+                        <i class="fa-solid fa-eye-slash position-absolute top-50 end-0 translate-middle-y me-3"
+                            id="togglePassword" style="cursor: pointer;"></i>
+
+                        <div class=" small mt-1" id="passwordError">
+                            Password must contain at least 8 characters, including uppercase, lowercase, number, and
+                            symbol.
+                        </div>
                     </div>
+
+                    <!-- Confirm Password -->
                     <div class="form-floating mb-3">
-                        <input type="password" class="form-control" id="floatingConfirmPassword" placeholder="Confirm Password" required oninput="validatePassword()">
+                        <input type="password" class="form-control" id="floatingConfirmPassword"
+                            placeholder="Confirm Password" required>
                         <label for="floatingConfirmPassword">Confirm Password</label>
                         <div class="invalid-feedback" id="confirmPasswordError">Passwords do not match.</div>
-                    </div>        
+                    </div>
+
+                    <!-- Terms and Conditions -->
                     <div class="form-check d-flex align-items-center">
                         <input class="form-check-input" type="checkbox" id="gridCheck" required>
                         <label class="form-check-label ms-2" for="gridCheck">
@@ -156,12 +179,87 @@
                         </label>
                         <div class="invalid-feedback">You must agree to the terms and conditions.</div>
                     </div>
-                    <button type="submit" class="btn btn-primary submit_btn w-100 my-4">Continue</button>
+
+                    <button type="submit" class="btn btn-primary submit_btn w-100 my-4" disabled
+                        id="submitButton">Continue</button>
                 </form>
             </div>
         </div>
     </section>
 
+    JavaScript for Validation & Password Show/Hide
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const passwordField = document.getElementById("password");
+            const confirmPasswordField = document.getElementById("floatingConfirmPassword");
+            const togglePassword = document.getElementById("togglePassword");
+            const passwordError = document.getElementById("passwordError");
+            const confirmPasswordError = document.getElementById("confirmPasswordError");
+            const submitButton = document.getElementById("submitButton");
+
+            // ✅ Show/Hide Password
+            togglePassword.addEventListener("click", function () {
+                if (passwordField.type === "password") {
+                    passwordField.type = "text";
+                    togglePassword.classList.remove("fa-eye-slash");
+                    togglePassword.classList.add("fa-eye");
+                } else {
+                    passwordField.type = "password";
+                    togglePassword.classList.remove("fa-eye");
+                    togglePassword.classList.add("fa-eye-slash");
+                }
+            });
+
+            // ✅ Strong Password Validation
+            passwordField.addEventListener("input", function () {
+                const password = passwordField.value;
+                const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+                if (!strongPasswordRegex.test(password)) {
+                    passwordError.style.color = "red";
+                    passwordError.textContent = "Weak password! Use uppercase, lowercase, number & symbol.";
+                    passwordField.setCustomValidity("Weak password!");
+                    submitButton.disabled = true;
+                } else {
+                    passwordError.style.color = "green";
+                    passwordError.textContent = "Strong password!";
+                    passwordField.setCustomValidity("");
+                    validateConfirmPassword(); // Check confirm password
+                }
+            });
+
+            // ✅ Confirm Password Match
+            confirmPasswordField.addEventListener("input", validateConfirmPassword);
+
+            function validateConfirmPassword() {
+                if (confirmPasswordField.value !== passwordField.value) {
+                    confirmPasswordError.style.display = "block";
+                    confirmPasswordField.setCustomValidity("Passwords do not match!");
+                    submitButton.disabled = true;
+                } else {
+                    confirmPasswordError.style.display = "none";
+                    confirmPasswordField.setCustomValidity("");
+                    if (passwordField.checkValidity()) {
+                        submitButton.disabled = false;
+                    }
+                }
+            }
+        });
+
+        function validateName(inputField) {
+            // ✅ Only alphabets and spaces allowed
+            inputField.value = inputField.value.replace(/[^A-Za-z\s]/g, '');
+
+            // ✅ If field is empty, show error
+            if (inputField.value.trim() === "") {
+                inputField.classList.add("is-invalid");
+                inputField.setCustomValidity("Invalid Name");
+            } else {
+                inputField.classList.remove("is-invalid");
+                inputField.setCustomValidity("");
+            }
+        }
+    </script>
 
     <!-- Bootstrap js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
