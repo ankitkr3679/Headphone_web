@@ -98,6 +98,17 @@
     .title{
         font-size: 0.9rem
     }
+
+    /* About page */
+    .about-slider,
+    .feature-img-box,
+    .style-img{
+        width: 50%;
+        margin: auto;
+    }
+    .about-section .carousel-inner{
+        border-radius: 0 0 1.875rem;
+    }
 }
 
 @media(max-width:430px){

@@ -153,6 +153,25 @@ p {
     border-color: var(--primarya-color);
     color: var(--text-white);
 }
+.main-btno {
+    display: inline-block;
+    background-color: var(--white-color);
+    border: 2px solid var(--primarya-color);
+    color: var(--primarya-color);
+    padding-inline: 1.75rem;
+    height: 40px;
+    line-height: 40px;
+    border-radius: .25rem;
+    /* font-family: var(--second-font);
+    font-size: var(--small-font-size); */
+    /* font-weight: var(--weight-700); */
+    transition: all 0.4s var(--transition);
+}
+.main-btno:hover {
+    background-color: var(--white-color);
+    color: var(--primarya-color);
+    
+}
 .noselect {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -269,3 +288,24 @@ p {
 .navigation-wrap {
     transition: all 0.3s ease-in-out;
 }
+
+/* About Page */
+.about-section .carousel-inner{
+    border-radius:  0 0 5rem;
+}
+.about-section .main-btno span, 
+.style-section .main-btno span{
+    color: var(--black--color);
+}
+.about-section .carousel-indicators{
+    margin-bottom: -2.5rem;
+}
+.about-section .carousel-indicators [data-bs-target] {
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 50%;
+    background-color: var(--primarya-color);
+}
+
+
+
